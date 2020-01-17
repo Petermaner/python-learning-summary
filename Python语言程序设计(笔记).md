@@ -22,7 +22,16 @@ a=eval(input())
 这是一个简单题，重点在于理解格式化输出的方法。   
 
 注意：如果平凡根后产生一个复数，由于复数的实部和虚部都是浮点数，.3f可以将实部和虚部分别取三位小数。   
-    
+
+1.1、凯撒密码（ 栅栏密码 ） 
+```py
+plaincode=input("请输入明文：")
+for p in plaincode:
+    if ord("a")<=ord(p)<=ord("z"):
+        print(chr(ord('a')+(ord(p)-ord('a')+3)%26),end="")  #end="",是不想让【循环】输出换行。因为print自带换行。
+    else:                                                 # %26,mod26是因为＋3后可能超出范围，通过这个操作限定范围
+        print(p,end="")
+```
 2、字符串分段组合   
 知识点：str.split("xxxxx"),返回一个 列表 ，由str中被 xxxxx 分隔的部分组成   
 例题：   
