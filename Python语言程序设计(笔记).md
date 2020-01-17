@@ -149,4 +149,79 @@ while count>0: # count =5,4,3,2,1都可以循环，不就是循环5次嘛🐎
     n_+=1     #注意缩进，不管啥，每次搞完都要把 n_加1，方能遍历 【遍历】
 ```
 
+6、七段数码管turtle绘制    
+知识点：   
+1 函数定义与编写   
+2 return   
+3 局部变量和全局变量    
+4 参数传递问题  
+#建议答案：   
+```py
+import turtle
+def drawgap():      #画空白函数
+    turtle.penup()
+    turtle.fd(5)
+def drawline(line): #画线条函数
+    drawgap()
+    turtle.pendown() if line else turtle.penup
+    turtle.fd(20)
+    drawgap()
+    turtle.right(90)
+def drawdigit(digit):  #画一个数码函数
+    drawline(1) if digit in [2,3,4,5,6,8,9] else drawline(0)
+    drawline(1) if digit in [0,1,3,4,5,6,7,8,9] else drawline(0)
+    drawline(1) if digit in [0,2,3,5,6,8,9] else drawline(0)
+    drawline(1) if digit in [0,2,6,8] else drawline(0)
+    turtle.left(90)
+    drawline(1) if digit in [0,4,5,6,8,9] else drawline(0)
+    drawline(1) if digit in [0,2,3,5,6,7,8,9] else drawline(0)
+    drawline(1) if digit in [0,1,2,3,4,7,8,9] else drawline(0)
+    turtle.right(180)
+    turtle.fd(10)
+def drawdate(date):   #需要的日期函数
+    for p in date:
+        drawdigit(eval(p))
+def main():           #主函数
+    turtle.setup(800,250,200,300)
+    turtle.pensize(5)
+    turtle.penup()
+    turtle.fd(-150)
+    drawdate("20200117")
+    turtle.hideturtle()
+    turtle.done()
+main()
+```
 
+7、汉诺塔问题    
+知识点：函数递归调用     
+三个部分    
+1 函数＋分支(if ->3 else ->2)    
+2链条   
+3基例    
+#建议答案
+```py
+count=0
+def han(n,A,C,B):  #四个参数采用位置传递，代表的含义分别为：搬运圆盘编号，圆盘起始位置，圆盘目标位置，过渡位置
+    global count
+    if n==1:
+        print("{}:{}->{}".format(1,A,C))
+        count+=1
+    else:          #递归链条表示：先把上面n-1个搬到过渡位置，剩的那个最大的放到目标位置，再把那n-1个放到目标位置
+        han(n-1,A,B,C)
+        print("{}:{}->{}".format(n,A,C))
+        count+=1
+        han(n-1,B,C,A)
+print(han(3,"A","C","B"))  #以三个圆盘为例
+print(count)
+```
+#输出结果：  
+```
+1:A->C
+2:A->B
+1:C->B
+3:A->C
+1:B->A
+2:B->C
+1:A->C
+7
+```
