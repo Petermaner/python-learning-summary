@@ -246,3 +246,39 @@ print(count)
 1:A->C
 7
 ```
+8、基本统计值计算    
+总和、平均数、中位数、方差
+```py
+def getnum():
+    ls=[]
+    nums=input("请输入数字：")
+    while nums !='':
+        ls.append(eval(nums))
+        nums=input("请输入数字：")
+    return ls
+def pingjun(ls):
+    sum=0.0
+    for p in ls:
+        sum+=p
+    return sum/len(ls)
+
+def fangcha(ls,ave):
+    sum=0.0
+    for p in ls:
+        sum+=(p-ave)**2
+    return sum
+
+def mid(ls):
+    sorted(ls)
+    size=len(ls)
+    if size%2==0:
+        med=(ls[size//2-1]+ls[size//2])/2
+    else:
+        med=ls[size//2]
+    return med
+
+n=getnum()
+
+print("平均数：{}\n方差{}\n中位数{}\n".format(pingjun(n),fangcha(n,pingjun(n)),mid(n)))
+
+```
