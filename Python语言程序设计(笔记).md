@@ -32,6 +32,27 @@ for p in plaincode:
     else:                                                 # %26,mod26是因为＋3后可能超出范围，通过这个操作限定范围
         print(p,end="")
 ```
+1.2、随机密码生成   
+描述   
+补充编程模板中代码，完成如下功能：‪‬‪‬‪‬‪‬‪‬‮‬‭‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‫‬‮‬‪‬‪‬‪‬‪‬‪‬‮‬‪‬‫‬‪‬‪‬‪‬‪‬‪‬‮‬‫‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‪‬‫‬    
+
+以整数17为随机数种子，获取用户输入整数N为长度，产生3个长度为N位的密码，密码的每位是一个数字。每个密码单独一行输出。‪‬‪‬‪‬‪‬‪‬‮‬‭‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‫‬‮‬‪‬‪‬‪‬‪‬‪‬‮‬‪‬‫‬‪‬‪‬‪‬‪‬‪‬‮‬‫‬‪‬‪‬‪‬‪‬‪‬‪‬‮‬‪‬‫‬    
+
+产生密码采用random.randint()函数。  
+#建议答案：
+```py
+import random
+
+def mima(length):
+    a=10**(length-1)
+    b=10**length - 1
+    return "{}".format(random.randint(a,b))  #居然可以return这个东西
+
+length=eval(input())
+random.seed(17)
+for i in range(3):
+    print(mima(length))
+```
 2、字符串分段组合   
 知识点：str.split("xxxxx"),返回一个 列表 ，由str中被 xxxxx 分隔的部分组成   
 例题：   
