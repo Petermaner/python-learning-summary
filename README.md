@@ -1,1 +1,1 @@
-# python-learning-summy
+# python-learning-summary
